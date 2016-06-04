@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace IOUCommands.Dtos
+namespace IOU_Slack_Backend.Dtos
 {
     public class CommandRequest
     {

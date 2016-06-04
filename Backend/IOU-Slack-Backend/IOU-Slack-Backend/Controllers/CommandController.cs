@@ -1,5 +1,5 @@
-﻿using IOUCommands.Dtos;
-using IOUCommands.Models;
+﻿using IOU_Slack_Backend.Dtos;
+using IOU_Slack_Backend.Commands;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -9,7 +9,7 @@ using System.Net.Http;
 using System.Text;
 using System.Web.Http;
 
-namespace IOUCommands.Controllers
+namespace IOU_Slack_Backend.Controllers
 {
     [RoutePrefix("api/command")]
     public class CommandController : ApiController
@@ -30,7 +30,7 @@ namespace IOUCommands.Controllers
             var commandResponse = commandHandler.Execute();
 
             HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, "value");
-            response.Content = new StringContent(commandResponse);
+            response.Content = new StringContent("UOI Response!!");
 
             return this.ResponseMessage(response);
         }
@@ -39,7 +39,7 @@ namespace IOUCommands.Controllers
         [Route("iou")]
         public IHttpActionResult IOU(string data)
         {
-            return this.Ok("Hello !");
+            return this.Ok("IOU Response!!");
         }
     }
 }
