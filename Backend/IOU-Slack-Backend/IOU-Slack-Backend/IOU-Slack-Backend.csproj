@@ -222,9 +222,14 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\SwaggerConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Backend-Models\Group.cs" />
+    <Compile Include="Backend-Models\Transaction.cs" />
+    <Compile Include="Backend-Models\User.cs" />
+    <Compile Include="Backend-Models\UserInGroup.cs" />
     <Compile Include="Commands\CommandHandler.cs" />
     <Compile Include="Context\SystemDBContext.cs" />
     <Compile Include="Controllers\CommandController.cs" />
+    <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Dtos\CommandRequest.cs" />
     <Compile Include="Dtos\CommandResponse.cs" />
     <Compile Include="Global.asax.cs">
@@ -253,6 +258,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Test\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
