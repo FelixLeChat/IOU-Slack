@@ -84,7 +84,13 @@ namespace IOU_Slack_Backend.Helper
 
                 var content = "";
                 if (obj != null)
-                    content = JsonConvert.SerializeObject(obj);
+                {
+                    if (obj is string)
+                        content = (string) obj;
+                    else
+                        content = JsonConvert.SerializeObject(obj);
+                }
+                    
 
                 var response =
                     await
