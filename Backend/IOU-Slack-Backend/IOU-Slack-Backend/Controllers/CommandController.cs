@@ -1,13 +1,9 @@
-﻿using IOU_Slack_Backend.Dtos;
-using IOU_Slack_Backend.Commands;
-using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
+﻿using System.Net;
 using System.Net.Http;
-using System.Text;
 using System.Web.Http;
+using IOU_Slack_Backend.Commands;
+using IOU_Slack_Backend.Dtos;
+using Newtonsoft.Json;
 
 namespace IOU_Slack_Backend.Controllers
 {

@@ -1,11 +1,9 @@
-﻿using System.Linq;
-using System.Web.Mvc;
-using IOU_Slack_Backend.Context;
+﻿using System.Web.Http;
 
 namespace IOU_Slack_Backend.Controllers
 {
     [RoutePrefix("api/test")]
-    public class TestController : Controller
+    public class TestController : ApiController
     {
         [HttpGet]
         public string Test()
