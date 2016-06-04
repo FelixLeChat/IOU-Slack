@@ -1,4 +1,7 @@
-﻿using IOU_Slack_Backend.Dtos;
+﻿using IOU_Slack_Backend.Backend_Models;
+using IOU_Slack_Backend.Dtos;
+using IOU_Slack_Backend.Helper;
+using IOU_Slack_Backend.Services;
 
 namespace IOU_Slack_Backend.Commands.Models
 {
@@ -11,18 +14,16 @@ namespace IOU_Slack_Backend.Commands.Models
 
         public override void Execute()
         {
-            //var endpoint = "https://ioubot.herokuapp.com/api/create-event";
+            var userId = this.CommandRequest.User_ID;
+            var eventName = this.Parameters;
+            var channelId = this.CommandRequest.Channel_ID;
 
-            //var e = new Event
-            //{
-            //    ChannelId = this.CommandRequest.Channel_ID,
-            //    ChannelName = this.CommandRequest.Channel_Name,
-            //    CreatorUserId = this.CommandRequest.User_ID,
-            //    CreatorUsername = this.CommandRequest.User_Name,
-            //    EventName = this.Parameters
-            //};
+            var eventId = new EventService()
+                .GetByName(eventName, channelId).Id;
 
-            //HttpRequestHelper.PostObjectAsync(endpoint, e);
+            new EventSubscriptionService().Create(
+                new EventSubscription { EventId = eventId, UserId = userId }
+            );
         }
     }
 }

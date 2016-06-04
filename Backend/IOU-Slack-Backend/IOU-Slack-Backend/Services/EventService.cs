@@ -67,5 +67,13 @@ namespace IOU_Slack_Backend.Services
                 db.SaveChanges();
             }
         }
+
+        public Event GetByName(string eventName, string channelId)
+        {
+            using (var db = new SystemDbContext())
+            {
+                return db.Events.Single(e => e.EventName == eventName && e.ChannelId == channelId);
+            }
+        }
     }
 }

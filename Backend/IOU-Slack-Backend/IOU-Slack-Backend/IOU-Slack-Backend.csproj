@@ -228,6 +228,7 @@
     <Compile Include="App_Start\SwaggerConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Backend-Models\Event.cs" />
+    <Compile Include="Backend-Models\EventSubscription.cs" />
     <Compile Include="Backend-Models\Transaction.cs" />
     <Compile Include="Commands\CommandHandler.cs" />
     <Compile Include="Commands\Models\Command.cs" />
@@ -243,6 +244,7 @@
     <Compile Include="Helper\Sha1Hash.cs" />
     <Compile Include="Services\AbstractService.cs" />
     <Compile Include="Services\EventService.cs" />
+    <Compile Include="Services\EventSubscriptionService.cs" />
     <Compile Include="Utilities.cs" />
     <Compile Include="Context\SystemDBContext.cs" />
     <Compile Include="Controllers\CommandController.cs" />
@@ -290,7 +292,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>50718</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
