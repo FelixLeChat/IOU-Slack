@@ -1,4 +1,5 @@
-﻿using IOU_Slack_Backend.Dtos;
+﻿using IOU_Slack_Backend.Commands.Models;
+using IOU_Slack_Backend.Dtos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,7 +18,7 @@ namespace IOU_Slack_Backend.Commands
                 case CommandType.CreateEvent:
                     command = new CreateEventCommand(parameters, commandRequest);
                     break;
-                case CommandType.RegisterToEvent:
+                case CommandType.SubscribeToEvent:
                     //command = new UOICommand(commandRequest);
                     break;
             }
