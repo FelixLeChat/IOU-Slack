@@ -6,9 +6,10 @@ using IOU_Slack_Backend.Helper;
 
 namespace IOU_Slack_Backend.Services
 {
-    public class UserService
+    public class UserService : AbstractService<User>
     {
-        public static List<User> GetAllUsers()
+
+        public override List<User> GetAll()
         {
             using (var db = new SystemDbContext())
             {
@@ -16,26 +17,39 @@ namespace IOU_Slack_Backend.Services
             }
         }
 
-        public void CreateUser(User user)
+        public override User Get(string id)
         {
             using (var db = new SystemDbContext())
             {
-                db.Users.Add(user);
-                db.SaveChanges();
+                return db.Users.FirstOrDefault(x => x.UserId == id);
             }
         }
 
-        public void DeleteUser(string userId)
+        public override void Delete(User element)
         {
             using (var db = new SystemDbContext())
             {
-                var user = db.Users.FirstOrDefault(x => x.UserId == userId);
+                var user = db.Users.FirstOrDefault(x => x.UserId == element.UserId);
                 if (user == null)
                     throw HttpResponseExceptionHelper.Create("No user exist with this ID", HttpStatusCode.BadRequest);
 
                 db.Users.Remove(user);
                 db.SaveChanges();
             }
+        }
+
+        public override void Create(User element)
+        {
+            using (var db = new SystemDbContext())
+            {
+                db.Users.Add(element);
+                db.SaveChanges();
+            }
+        }
+
+        public override void Update(User element)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }
