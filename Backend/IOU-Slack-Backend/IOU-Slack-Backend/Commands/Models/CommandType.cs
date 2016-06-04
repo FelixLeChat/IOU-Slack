@@ -8,10 +8,11 @@ namespace IOU_Slack_Backend.Commands.Models
 {
     public enum CommandType
     {
-        [Description("create event")]
+        [Description(@"create event ([^\s]*)")]
         CreateEvent,
-        [Description("subscribe to")]
+        [Description(@"subscribe to ([^\s]*)")]
         SubscribeToEvent,
-        Null
+        [Description(@"pay for ([^\s]*) by ([^\s]*)")]
+        PayFor
     }
 }

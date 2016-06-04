@@ -5,7 +5,7 @@ namespace IOU_Slack_Backend.Commands.Models
 {
     public class CreateEventCommand : Command
     {
-        public CreateEventCommand(string parameters, CommandRequest commandRequest) : base(parameters, commandRequest)
+        public CreateEventCommand(string[] parameters, CommandRequest commandRequest) : base(parameters, commandRequest)
         {
             this.Type = CommandType.CreateEvent;
         }
@@ -20,7 +20,7 @@ namespace IOU_Slack_Backend.Commands.Models
                 ChannelName = this.CommandRequest.Channel_Name,
                 CreatorUserId = this.CommandRequest.User_ID,
                 CreatorUsername = this.CommandRequest.User_Name,
-                EventName = this.Parameters
+                EventName = this.Parameters[0]
             };
 
             HttpRequestHelper.PostObjectAsync(endpoint, e);
