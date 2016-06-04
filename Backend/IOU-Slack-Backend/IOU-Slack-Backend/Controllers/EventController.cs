@@ -14,5 +14,12 @@ namespace IOU_Slack_Backend.Controllers
         {
             EventService.Create(newEvent);
         }
+
+        [HttpGet]
+        [Route("close/{eventID}")]
+        public void CloseEvent(string eventID)
+        {
+            EventService.CloseEvent(eventID);
+        }
     }
 }

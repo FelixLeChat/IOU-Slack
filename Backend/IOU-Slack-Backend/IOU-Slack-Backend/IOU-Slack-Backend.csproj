@@ -100,6 +100,7 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Numerics" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -241,6 +242,7 @@
     <Compile Include="Controllers\SubscribeController.cs" />
     <Compile Include="Helper\HttpRequestHelper.cs" />
     <Compile Include="Helper\HttpResponseExceptionHelper.cs" />
+    <Compile Include="Helper\Sha1Hash.cs" />
     <Compile Include="Services\AbstractService.cs" />
     <Compile Include="Services\EventService.cs" />
     <Compile Include="Services\EventSubscriptionService.cs" />

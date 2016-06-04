@@ -13,6 +13,8 @@ namespace IOU_Slack_Backend.Commands.Models
         [Description(@"subscribe to ([^\s]*)")]
         SubscribeToEvent,
         [Description(@"pay for ([^\s]*) by ([^\s]*)")]
-        PayFor
+        PayFor,
+        [Description(@"close registrations of ([^\s]*)")]
+        CloseRegistration
     }
 }
