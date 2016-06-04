@@ -22,7 +22,7 @@ namespace IOU_Slack_Backend.Commands
                     command = new SubscribeToEventCommand(parameters, commandRequest);
                     break;
                 case CommandType.CloseRegistration:
-                    //command = new CloseRegistrationEvent(parameters, commandRequest);
+                    command = new CloseRegistrationEvent(parameters, commandRequest);
                     break;
             }
 

@@ -6,7 +6,7 @@ namespace IOU_Slack_Backend.Commands.Models
 {
     public class CloseRegistrationEvent : Command
     {
-        public CloseRegistrationEvent(string parameters, CommandRequest commandRequest) : base(parameters, commandRequest)
+        public CloseRegistrationEvent(string[] parameters, CommandRequest commandRequest) : base(parameters, commandRequest)
         {
             this.Type = CommandType.SubscribeToEvent;
         }
@@ -18,9 +18,14 @@ namespace IOU_Slack_Backend.Commands.Models
             var eventService = new EventService();
 
             var eventId = eventService
-                .getEventByAdminId(this.Parameters, CommandRequest.User_ID).Id;
+                .GetEventByCreatorId(this.Parameters[0], CommandRequest.User_ID).Id;
 
-            string e = "{ userId:"+CommandRequest.User_ID+"userName:"+CommandRequest.User_Name+"eventId:"+eventId+"}";
+            var e = new Event
+            {
+                CreatorUserId = CommandRequest.User_ID,
+                CreatorUsername = CommandRequest.User_Name,
+                Id = eventId
+            };
 
             HttpRequestHelper.PostObjectAsync(endpoint, e);
 
