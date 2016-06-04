@@ -12,15 +12,13 @@ namespace IOU_Slack_Backend.Controllers
     {
         [HttpPost]
         [Route("uoi")]
-        public IHttpActionResult UOI(string data)
+        public IHttpActionResult UOI(CommandRequest commandRequest)
         {
-            var commandRequest = JsonConvert.DeserializeObject<CommandRequest>(data);
-
             CommandHandler commandHandler = new CommandHandler(commandRequest, CommandType.UOI);
 
             if (!commandHandler.ValidateCommand())
             {
-                return this.Unauthorized();
+                //return this.Unauthorized();
             }
 
             var commandResponse = commandHandler.Execute();
@@ -33,9 +31,16 @@ namespace IOU_Slack_Backend.Controllers
 
         [HttpPost]
         [Route("iou")]
-        public IHttpActionResult IOU(string data)
+        public string IOU()
         {
-            return this.Ok("IOU Response!!");
+            return "test";
+        }
+
+        [HttpPost]
+        [Route("test")]
+        public IHttpActionResult Get()
+        {
+            return this.Ok("Get!!");
         }
     }
 }
