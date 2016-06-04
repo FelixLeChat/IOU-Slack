@@ -15,10 +15,10 @@ namespace IOU_Slack_Backend.Controllers
     public class CommandController : ApiController
     {
         [HttpPost]
-        [Route("uoi")]
-        public CommandResponse UOI(CommandRequest commandRequest)
+        [Route("iou")]
+        public CommandResponse IOU(CommandRequest commandRequest)
         {
-            CommandHandler commandHandler = new CommandHandler(commandRequest, CommandType.UOI);
+            CommandHandler commandHandler = new CommandHandler(commandRequest);
 
             if (!commandHandler.ValidateCommand())
             {
@@ -28,20 +28,6 @@ namespace IOU_Slack_Backend.Controllers
             var commandResponse = commandHandler.Execute();
 
             return commandResponse;
-        }
-
-        [HttpPost]
-        [Route("iou")]
-        public string IOU()
-        {
-            return "test";
-        }
-
-        [HttpPost]
-        [Route("test")]
-        public IHttpActionResult Get()
-        {
-            return this.Ok("Get!!");
         }
     }
 }

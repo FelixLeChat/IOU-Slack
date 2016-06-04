@@ -6,17 +6,17 @@ using System.Web;
 
 namespace IOU_Slack_Backend.Commands
 {
-    public class IOUCommand : Command
+    public class CreateEventCommand : Command
     {
-        public IOUCommand(CommandRequest commandRequest) : base(commandRequest)
+        public CreateEventCommand(string parameters, CommandRequest commandRequest) : base(parameters, commandRequest)
         {
-            this.Type = CommandType.IOU;
+            this.Type = CommandType.CreateEvent;
             this.ValidationToken = "QV9RtOG4wtlriresDpig08zx";
         }
 
         public override void Execute()
         {
-
+            //channelId, userId, name of event, username, channelname
         }
     }
 }

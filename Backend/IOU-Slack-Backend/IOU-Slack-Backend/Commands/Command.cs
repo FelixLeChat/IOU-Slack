@@ -9,14 +9,19 @@ namespace IOU_Slack_Backend.Commands
     public abstract class Command
     {
         public CommandType Type { get; set; }
+
         public string ValidationToken { get; set; }
+        public string Parameters { get; set; }
 
         public CommandRequest CommandRequest { get; set; }
         public CommandResponse CommandResponse { get; set; }
 
-        public Command(CommandRequest commandRequest)
+        public Command(string parameters, CommandRequest commandRequest)
         {
+            this.Parameters = parameters;
             this.CommandRequest = commandRequest;
+
+            this.CommandResponse = new CommandResponse();
         }
 
         public bool ValidateToken()

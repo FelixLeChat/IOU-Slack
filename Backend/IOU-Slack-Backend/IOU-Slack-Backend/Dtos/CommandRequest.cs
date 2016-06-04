@@ -8,25 +8,15 @@ namespace IOU_Slack_Backend.Dtos
 {
     public class CommandRequest
     {
-        [JsonProperty("token")]
         public string Token { get; set; }
-        [JsonProperty("team_id")]
-        public string TeamID { get; set; }
-        [JsonProperty("team_domain")]
-        public string TeamDomain { get; set; }
-        [JsonProperty("channel_id")]
-        public string ChannelID { get; set; }
-        [JsonProperty("channel_name")]
-        public string ChannelName { get; set; }
-        [JsonProperty("user_id")]
-        public string UserID { get; set; }
-        [JsonProperty("user_name")]
-        public string Username { get; set; }
-        [JsonProperty("command")]
-        public string CommandName { get; set; }
-        [JsonProperty("text")]
+        public string Team_ID { get; set; }
+        public string Team_Domain { get; set; }
+        public string Channel_ID { get; set; }
+        public string Channel_Name { get; set; }
+        public string User_ID { get; set; }
+        public string User_Name { get; set; }
+        public string Command { get; set; }
         public string Text { get; set; }
-        [JsonProperty("response_url")]
-        public string ResponseURL { get; set; }
+        public string Response_Url { get; set; }
     }
 }

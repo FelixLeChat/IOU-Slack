@@ -14,5 +14,11 @@ namespace IOU_Slack_Backend.Dtos
         public string Text { get; set; }
         [JsonProperty("attachments")]
         public string[] Attachments { get; set; }
+
+        public CommandResponse()
+        {
+            this.ResponseType = "in_channel";
+            this.Text = "";
+        }
     }
 }

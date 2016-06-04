@@ -8,17 +8,17 @@ namespace IOU_Slack_Backend.Commands
 {
     public static class CommandFactory
     {
-        public static Command Create(CommandType type, CommandRequest commandRequest)
+        public static Command Create(CommandType type, string parameters, CommandRequest commandRequest)
         {
             Command command = null;
 
-            switch(type)
+            switch (type)
             {
-                case CommandType.IOU:
-                    command = new IOUCommand(commandRequest);
-                        break;
-                case CommandType.UOI:
-                    command = new UOICommand(commandRequest);
+                case CommandType.CreateEvent:
+                    command = new CreateEventCommand(parameters, commandRequest);
+                    break;
+                case CommandType.RegisterToEvent:
+                    //command = new UOICommand(commandRequest);
                     break;
             }
 

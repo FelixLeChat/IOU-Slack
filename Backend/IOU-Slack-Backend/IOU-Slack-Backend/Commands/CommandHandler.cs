@@ -12,9 +12,16 @@ namespace IOU_Slack_Backend
     {
         public Command Command { get; set; }
 
-        public CommandHandler(CommandRequest commandRequest, CommandType commandType)
+        public CommandHandler(CommandRequest commandRequest)
         {
-            this.Command = CommandFactory.Create(commandType, commandRequest);
+            ResolvedCommand resolvedCommand = this.ResolveCommandType(commandRequest.Text);
+
+            this.Command = CommandFactory.Create(resolvedCommand.Type, resolvedCommand.Parameters, commandRequest);
+        }
+
+        private ResolvedCommand ResolveCommandType(string text)
+        {
+            return CommandTypeResolver.Resolve(text);
         }
 
         public bool ValidateCommand()
