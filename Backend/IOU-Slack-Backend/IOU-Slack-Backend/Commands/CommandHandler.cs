@@ -22,11 +22,11 @@ namespace IOU_Slack_Backend
             return this.Command.ValidateToken();
         }
 
-        public string Execute()
+        public CommandResponse Execute()
         {
             this.Command.Execute();
 
-            return JsonConvert.SerializeObject(this.Command.CommandResponse);
+            return this.Command.CommandResponse;
         }
     }
 }

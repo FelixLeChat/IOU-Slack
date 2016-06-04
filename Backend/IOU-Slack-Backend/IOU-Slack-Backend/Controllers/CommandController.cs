@@ -16,21 +16,18 @@ namespace IOU_Slack_Backend.Controllers
     {
         [HttpPost]
         [Route("uoi")]
-        public IHttpActionResult UOI(CommandRequest commandRequest)
+        public CommandResponse UOI(CommandRequest commandRequest)
         {
             CommandHandler commandHandler = new CommandHandler(commandRequest, CommandType.UOI);
 
             if (!commandHandler.ValidateCommand())
             {
-                //return this.Unauthorized();
+                throw new HttpResponseException(HttpStatusCode.Unauthorized);
             }
 
             var commandResponse = commandHandler.Execute();
 
-            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, "value");
-            response.Content = new StringContent("UOI Response!!");
-
-            return this.ResponseMessage(response);
+            return commandResponse;
         }
 
         [HttpPost]

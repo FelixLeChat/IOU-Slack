@@ -16,7 +16,11 @@ namespace IOU_Slack_Backend.Commands
 
         public override void Execute()
         {
-            ///
+            this.CommandResponse = new CommandResponse
+            {
+                ResponseType = "in_channel",
+                Text = "TEST"
+            };
         }
     }
 }
