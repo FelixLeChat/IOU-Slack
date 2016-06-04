@@ -1,7 +1,8 @@
 ﻿using IOU_Slack_Backend.Dtos;
 using System.Collections.Specialized;
 using System.Net;
-
+using SlackAPI;
+using Newtonsoft.Json;
 
 namespace IOU_Slack_Backend.Commands
 {
@@ -23,7 +24,10 @@ namespace IOU_Slack_Backend.Commands
             var response = client.UploadValues("https://slack.com/api/channels.info", "POST", new NameValueCollection() {
             {"token",this.ValidationToken},
             {"channel",CommandRequest.ChannelID}});
-            return System.Text.Encoding.UTF8.GetString(response);
+             Channel channel = JsonConvert.DeserializeObject<Channel>(System.Text.Encoding.UTF8.GetString(response));
+            return channel.name;
+        } 
+           
         } 
     }
 }
