@@ -227,16 +227,22 @@
     <Compile Include="App_Start\SwaggerConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Backend-Models\Event.cs" />
+    <Compile Include="Backend-Models\EventSubscription.cs" />
     <Compile Include="Backend-Models\Transaction.cs" />
     <Compile Include="Commands\CommandHandler.cs" />
-    <Compile Include="Commands\CommandTypeResolver.cs" />
-    <Compile Include="Commands\ResolvedCommand.cs" />
+    <Compile Include="Commands\Models\Command.cs" />
+    <Compile Include="Commands\Models\CommandType.cs" />
+    <Compile Include="Commands\Models\CreateEventCommand.cs" />
+    <Compile Include="Commands\Models\SubscribeToEventCommand.cs" />
+    <Compile Include="Commands\Resolver\CommandTypeResolver.cs" />
+    <Compile Include="Commands\Resolver\ResolvedCommand.cs" />
     <Compile Include="Controllers\EventController.cs" />
     <Compile Include="Controllers\SubscribeController.cs" />
     <Compile Include="Helper\HttpRequestHelper.cs" />
     <Compile Include="Helper\HttpResponseExceptionHelper.cs" />
     <Compile Include="Services\AbstractService.cs" />
     <Compile Include="Services\EventService.cs" />
+    <Compile Include="Services\EventSubscriptionService.cs" />
     <Compile Include="Utilities.cs" />
     <Compile Include="Context\SystemDBContext.cs" />
     <Compile Include="Controllers\CommandController.cs" />
@@ -245,10 +251,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Commands\Command.cs" />
     <Compile Include="Commands\CommandFactory.cs" />
-    <Compile Include="Commands\CommandType.cs" />
-    <Compile Include="Commands\CreateEventCommand.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -287,7 +290,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>50718</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
