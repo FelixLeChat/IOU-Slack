@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using IOU_Slack_Backend.Context;
+using System.Linq;
 
 namespace IOU_Slack_Backend.Services
 {
@@ -32,6 +33,14 @@ namespace IOU_Slack_Backend.Services
         public override void Update(Event element)
         {
             throw new System.NotImplementedException();
+        }
+
+        public Event GetByName(string eventName, string channelId)
+        {
+            using (var db = new SystemDbContext())
+            {
+                return db.Events.Single(e => e.EventName == eventName && e.ChannelId == channelId);
+            }
         }
     }
 }

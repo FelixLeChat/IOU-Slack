@@ -19,7 +19,7 @@ namespace IOU_Slack_Backend.Commands
                     command = new CreateEventCommand(parameters, commandRequest);
                     break;
                 case CommandType.SubscribeToEvent:
-                    //command = new UOICommand(commandRequest);
+                    command = new SubscribeToEventCommand(parameters, commandRequest);
                     break;
             }
 
