@@ -226,6 +226,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\SwaggerConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Backend-Models\Event.cs" />
     <Compile Include="Backend-Models\Group.cs" />
     <Compile Include="Backend-Models\Transaction.cs" />
     <Compile Include="Backend-Models\User.cs" />
@@ -233,10 +234,15 @@
     <Compile Include="Commands\CommandHandler.cs" />
     <Compile Include="Commands\CommandTypeResolver.cs" />
     <Compile Include="Commands\ResolvedCommand.cs" />
+    <Compile Include="Controllers\EventController.cs" />
+    <Compile Include="Helper\HttpRequestHelper.cs" />
+    <Compile Include="Helper\HttpResponseExceptionHelper.cs" />
+    <Compile Include="Services\AbstractService.cs" />
+    <Compile Include="Services\EventService.cs" />
+    <Compile Include="Services\UserService.cs" />
     <Compile Include="Utilities.cs" />
     <Compile Include="Context\SystemDBContext.cs" />
     <Compile Include="Controllers\CommandController.cs" />
-    <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Dtos\CommandRequest.cs" />
     <Compile Include="Dtos\CommandResponse.cs" />
     <Compile Include="Global.asax.cs">
