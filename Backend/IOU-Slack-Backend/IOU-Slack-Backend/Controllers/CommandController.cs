@@ -34,5 +34,12 @@ namespace IOUCommands.Controllers
 
             return this.ResponseMessage(response);
         }
+
+        [HttpPost]
+        [Route("iou")]
+        public IHttpActionResult IOU(string data)
+        {
+            return this.Ok("Hello !");
+        }
     }
 }
