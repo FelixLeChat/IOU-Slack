@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using IOU_Slack_Backend.Context;
 
 namespace IOU_Slack_Backend.Services
 {
@@ -21,7 +22,11 @@ namespace IOU_Slack_Backend.Services
 
         public override void Create(Event element)
         {
-            throw new System.NotImplementedException();
+            using (var db = new SystemDbContext())
+            {
+                db.Events.Add(element);
+                db.SaveChanges();
+            }
         }
 
         public override void Update(Event element)
