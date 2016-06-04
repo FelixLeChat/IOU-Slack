@@ -1,4 +1,5 @@
 ﻿using IOUCommands.Dtos;
+using IOUCommands.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,7 @@ using System.Web.Http;
 
 namespace IOUCommands.Controllers
 {
+    [RoutePrefix("api/command")]
     public class CommandController : ApiController
     {
         [HttpPost]
