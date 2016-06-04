@@ -42,5 +42,12 @@ namespace IOU_Slack_Backend.Services
                 return db.Events.Single(e => e.EventName == eventName && e.ChannelId == channelId);
             }
         }
+        public Event getEventByAdminId(string eventName, string creatorUserId)
+        {
+            using (var db = new SystemDbContext())
+            {
+                return db.Events.Single(e => e.EventName == eventName && e.CreatorUserId == creatorUserId);
+            }
+        }
     }
 }
