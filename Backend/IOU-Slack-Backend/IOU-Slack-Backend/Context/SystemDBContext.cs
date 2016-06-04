@@ -7,6 +7,11 @@ namespace IOU_Slack_Backend.Context
     {
         #region Fields
 
+        public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<Group> Groups { get; set; }
+        public virtual DbSet<UserInGroup> UsersInGroups { get; set; }
+        public virtual DbSet<Transaction> Transactions { get; set; }
+
         #endregion
 
         #region Constructors
