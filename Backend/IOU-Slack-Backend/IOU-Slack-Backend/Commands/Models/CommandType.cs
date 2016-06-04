@@ -12,6 +12,8 @@ namespace IOU_Slack_Backend.Commands.Models
         CreateEvent,
         [Description("subscribe to")]
         SubscribeToEvent,
+        [Description("close registrations of")]
+        CloseRegistration,
         Null
     }
 }
