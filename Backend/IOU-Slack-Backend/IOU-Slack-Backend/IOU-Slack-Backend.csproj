@@ -240,6 +240,7 @@
     <Compile Include="Commands\CommandType.cs" />
     <Compile Include="Commands\IOUCommand.cs" />
     <Compile Include="Commands\UOICommand.cs" />
+    <Compile Include="Helper\HttpRequestHelper.cs" />
     <Compile Include="Helper\HttpResponseExceptionHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\UserService.cs" />

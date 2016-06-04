@@ -24,10 +24,9 @@ namespace IOU_Slack_Backend.Commands
             var response = client.UploadValues("https://slack.com/api/channels.info", "POST", new NameValueCollection() {
             {"token",this.ValidationToken},
             {"channel",CommandRequest.ChannelID}});
-             Channel channel = JsonConvert.DeserializeObject<Channel>(System.Text.Encoding.UTF8.GetString(response));
+            Channel channel = JsonConvert.DeserializeObject<Channel>(System.Text.Encoding.UTF8.GetString(response));
             return channel.name;
         } 
            
-        } 
-    }
+    } 
 }
