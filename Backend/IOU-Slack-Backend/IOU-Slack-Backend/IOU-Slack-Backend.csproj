@@ -229,6 +229,7 @@
     <Compile Include="Commands\CommandHandler.cs" />
     <Compile Include="Context\SystemDBContext.cs" />
     <Compile Include="Controllers\CommandController.cs" />
+    <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Dtos\CommandRequest.cs" />
     <Compile Include="Dtos\CommandResponse.cs" />
     <Compile Include="Global.asax.cs">
@@ -257,6 +258,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Test\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
