@@ -11,6 +11,7 @@ namespace IOU_Slack_Backend.Context
         public virtual DbSet<Group> Groups { get; set; }
         public virtual DbSet<UserInGroup> UsersInGroups { get; set; }
         public virtual DbSet<Transaction> Transactions { get; set; }
+        public virtual DbSet<Event> Events { get; set; }
 
         #endregion
 
