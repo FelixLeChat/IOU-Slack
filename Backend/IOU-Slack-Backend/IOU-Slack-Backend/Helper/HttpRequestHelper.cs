@@ -11,6 +11,7 @@ namespace IOU_Slack_Backend.Helper
 {
     public class HttpRequestHelper
     {
+
         public static async Task<HttpResponseMessage> PostAsync(string url, Dictionary<string, string> parameters, string token = "")
         {
             using (var client = new HttpClient())
@@ -27,6 +28,21 @@ namespace IOU_Slack_Backend.Helper
             }
         }
 
+        /*Example :
+
+        public List<User> GetAllUsers()
+        {
+            var endpoint = "http://www.google.com";
+            var httpResponse = HttpRequestHelper.GetAsync(endpoint).Result;
+            var body = HttpRequestHelper.GetContent(httpResponse).Result;
+            var statusCode = HttpRequestHelper.GetStatusCode(httpResponse);
+
+            if (statusCode != HttpStatusCode.OK)
+                throw new Exception(body);
+
+            return JsonConvert.DeserializeObject<List<User>>(body);
+        }
+        */
         public static async Task<HttpResponseMessage> GetAsync(string url, string token = "")
         {
             using (var client = new HttpClient())
@@ -45,6 +61,20 @@ namespace IOU_Slack_Backend.Helper
             }
         }
 
+        /*Example: 
+        public GameModel CreateUser(User user)
+        {
+            var endpoint = "http://www.google.com";
+            var httpResponse = HttpRequestHelper.PostObjectAsync(endpoint, user).Result;
+            var body = HttpRequestHelper.GetContent(httpResponse).Result;
+            var statusCode = HttpRequestHelper.GetStatusCode(httpResponse);
+
+            if (statusCode != HttpStatusCode.OK)
+                throw new Exception(body);
+
+            return JsonConvert.DeserializeObject<string>(body);
+        }
+        */
         public static async Task<HttpResponseMessage> PostObjectAsync(string url, object obj, string token = "")
         {
             using (var client = new HttpClient())
