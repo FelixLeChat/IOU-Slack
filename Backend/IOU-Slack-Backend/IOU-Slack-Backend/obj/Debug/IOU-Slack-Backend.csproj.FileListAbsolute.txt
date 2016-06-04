@@ -190,3 +190,6 @@ C:\Users\izzy1\Documents\IOU-Slack\Backend\IOU-Slack-Backend\IOU-Slack-Backend\o
 C:\Users\izzy1\Documents\IOU-Slack\Backend\IOU-Slack-Backend\IOU-Slack-Backend\obj\Debug\IOU-Slack-Backend.pdb
 C:\Users\sebastien.crevier\Documents\Slackathon\IOU-Slack\Backend\IOU-Slack-Backend\IOU-Slack-Backend\bin\SlackAPI.dll
 C:\Users\sebastien.crevier\Documents\Slackathon\IOU-Slack\Backend\IOU-Slack-Backend\IOU-Slack-Backend\bin\SlackAPI.pdb
+C:\Users\Felix\Desktop\Git\IOU-Slack\Backend\IOU-Slack-Backend\IOU-Slack-Backend\bin\SlackAPI.dll
+C:\Users\Felix\Desktop\Git\IOU-Slack\Backend\IOU-Slack-Backend\IOU-Slack-Backend\bin\SlackAPI.pdb
+C:\Users\Felix\Desktop\Git\IOU-Slack\Backend\IOU-Slack-Backend\IOU-Slack-Backend\obj\Debug\IOU-Slack-Backend.csprojResolveAssemblyReference.cache
