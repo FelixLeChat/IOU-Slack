@@ -1,8 +1,8 @@
 ﻿namespace IOU_Slack_Backend.Models
 {
-    public class SplitModel
+    public class SubscribeModel
     {
-        public float Amount { get; set; }
         public string EventID { get; set; }
+        public string UserID { get; set; }
     }
 }

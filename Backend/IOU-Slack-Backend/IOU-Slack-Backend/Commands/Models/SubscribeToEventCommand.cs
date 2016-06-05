@@ -17,11 +17,11 @@ namespace IOU_Slack_Backend.Commands.Models
             var eventName = this.Parameters[0];
             var channelId = this.CommandRequest.Channel_ID;
 
-            var eventId = new EventService()
+            var id = new EventService()
                 .GetByName(eventName, channelId).ID;
 
             new EventSubscriptionService().Create(
-                new EventSubscription { EventID = eventId, UserID = userId }
+                new EventSubscription { id = id, UserID = userId }
             );
         }
     }

@@ -1,13 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using IOU_Slack_Backend.Helper;
+using IOU_Slack_Backend.Models;
 
 namespace IOU_Slack_Backend.Backend_Models
 {
     public class EventSubscription
     {
-        public int EventID { get; set; }
+        public int id { get; set; }
+
+        public string EventSubscriptionID { get; set; }
+        public string EventID { get; set; }
         public string UserID { get; set; }
+    }
+
+    public class EventSubscriptionHelper
+    {
+        public static string GetEventSubscriptionId(EventSubscription eventSubscription)
+        {
+            return Sha1Hash.GetSha1HashData(eventSubscription.EventID + eventSubscription.UserID);
+        }
+
+        public static string GetEventSubscriptionId(SubscribeModel model)
+        {
+            return Sha1Hash.GetSha1HashData(model.EventID + model.UserID);
+        }
     }
 }
