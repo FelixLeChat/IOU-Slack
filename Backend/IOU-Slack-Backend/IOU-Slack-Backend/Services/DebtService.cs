@@ -9,6 +9,14 @@ namespace IOU_Slack_Backend.Services
 {
     public class DebtService : AbstractService<Debt>
     {
+        public List<Debt> GetUnpaidDebts(string eventID)
+        {
+            using (var db = new SystemDbContext())
+            {
+                return db.Debts.Where(x => x.AmountDue <= 0 && x.EventID == eventID).ToList();
+            }
+        } 
+
         public override List<Debt> GetAll()
         {
             throw new System.NotImplementedException();
