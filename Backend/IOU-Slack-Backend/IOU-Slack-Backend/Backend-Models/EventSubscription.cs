@@ -7,7 +7,8 @@ namespace IOU_Slack_Backend.Backend_Models
 {
     public class EventSubscription
     {
-        public int EventId { get; set; }
+        public int ID { get; set; }
+        public string EventID { get; set; }
         public string UserId { get; set; }
     }
 }

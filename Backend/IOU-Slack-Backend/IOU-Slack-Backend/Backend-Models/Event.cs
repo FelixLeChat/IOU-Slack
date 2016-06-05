@@ -18,5 +18,6 @@
 
         // Server setup the rest
         public bool IsClosed { get; set; }
+        public float Price { get; set; }
     }
 }

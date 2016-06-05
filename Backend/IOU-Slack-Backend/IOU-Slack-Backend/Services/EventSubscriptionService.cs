@@ -2,11 +2,17 @@
 using IOU_Slack_Backend.Context;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace IOU_Slack_Backend.Services
 {
     public class EventSubscriptionService : AbstractService<EventSubscription>
     {
+        public int GetParticipantCount(string eventID)
+        {
+            return GetAll(eventID).Count;
+        }
+
         public override void Create(EventSubscription element)
         {
             using (var db = new SystemDbContext())
@@ -29,6 +35,14 @@ namespace IOU_Slack_Backend.Services
         public override List<EventSubscription> GetAll()
         {
             throw new NotImplementedException();
+        }
+
+        public List<EventSubscription> GetAll(string eventID)
+        {
+            using (var db = new SystemDbContext())
+            {
+                return db.EventSubscriptions.Where(x => x.EventID == eventID).ToList();
+            }
         }
 
         public override void Update(EventSubscription element)
