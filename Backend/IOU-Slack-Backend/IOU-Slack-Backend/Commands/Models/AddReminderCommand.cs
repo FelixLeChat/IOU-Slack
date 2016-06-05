@@ -17,15 +17,19 @@ namespace IOU_Slack_Backend.Commands.Models
         public override void Execute()
         {
           // var list = ....
-           List< Debt > list = null;
+         
             EventSubscriptionService eventSubscriptionService = new EventSubscriptionService();
             EventService eventService = new EventService();
-          
+            DebtService debtService = new DebtService();
+
+            var actualEvent = eventService.GetEventByCreatorId(this.Parameters[0], this.CommandRequest.User_ID);
+
+            List<Debt> list = debtService.GetUnpaidDebts(actualEvent.EventID);
+
             WebClient client = new WebClient();
 
             foreach(Debt debt in list)
-            {
-                var actualEvent = eventService.Get(debt.EventID);
+            { 
                 var response = client.UploadValues("https://slack.com/api/reminders.add", "POST", new NameValueCollection() {
                    { "token", "xoxp-48206941781-48203038320-48270725746-ed4777abef"},
                    {"Text", string.Format("You need to pay {0} to {1} before the {2}",debt.AmountDue,actualEvent.CreatorUsername,actualEvent.PaymentDeadline) },
