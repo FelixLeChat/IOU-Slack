@@ -37,7 +37,7 @@ namespace IOU_Slack_Backend.Commands.Models
 
             if (this.Parameters[2] == "paypal")
             {
-                var paypalLink = "https://www.paypal.me/felix/" + this.Parameters[0];
+                var paypalLink = "https://www.paypal.me/felixlrc/" + this.Parameters[0];
 
                 this.CommandResponse.Text = string.Format("Use the following <{0}|payment link> to pay {1} back!", paypalLink, e.CreatorUsername);
             }

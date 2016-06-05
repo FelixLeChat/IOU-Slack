@@ -242,6 +242,7 @@
     <Compile Include="Commands\Resolver\CommandTypeResolver.cs" />
     <Compile Include="Commands\Resolver\ResolvedCommand.cs" />
     <Compile Include="Controllers\EventController.cs" />
+    <Compile Include="Controllers\PaymentController.cs" />
     <Compile Include="Controllers\SubscribeController.cs" />
     <Compile Include="Helper\HttpRequestHelper.cs" />
     <Compile Include="Helper\HttpResponseExceptionHelper.cs" />
