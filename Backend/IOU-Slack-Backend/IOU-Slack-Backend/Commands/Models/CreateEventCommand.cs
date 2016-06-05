@@ -31,7 +31,7 @@ namespace IOU_Slack_Backend.Commands.Models
                {"token", "xoxp-48206941781-48203038320-48270725746-ed4777abef"},
                {"as_user", "true"},
                {"channel", "@ioubot" },
-               {"text", "CREATE_EVENT_IOU " + e.ChannelID + " " + e.ChannelName + " " + e.CreatorID + " " + e.CreatorUsername +  " " + e.Name }
+               {"text", "CREATE_EVENT_IOU " + e.Name + " " + e.CreatorID + " " + e.CreatorUsername + " " + e.ChannelID +  " " + e.ChannelName }
            });
 
             //Channel channel = new Channel();
