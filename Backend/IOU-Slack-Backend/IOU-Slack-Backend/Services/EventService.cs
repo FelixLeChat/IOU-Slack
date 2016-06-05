@@ -3,11 +3,31 @@ using System.Linq;
 using System.Net;
 using IOU_Slack_Backend.Context;
 using IOU_Slack_Backend.Helper;
+using IOU_Slack_Backend.Models;
 
 namespace IOU_Slack_Backend.Services
 {
     public class EventService : AbstractService<Event>
     {
+        public List<string> Split(SplitModel splitModel)
+        {
+            // Setup Event Cost
+            var ev = Get(splitModel.EventID);
+
+            var eventSubeventSubscriptionService = new EventSubscriptionService();
+            var participantCount = eventSubeventSubscriptionService.GetParticipantCount(splitModel.EventID);
+            if (participantCount == 0)
+                throw HttpResponseExceptionHelper.Create("No one has subscribed to the event", HttpStatusCode.BadRequest);
+
+            ev.Price = splitModel.Amount/participantCount;
+
+            // update Event
+            Update(ev);
+
+
+            // Generate Debts
+        }
+
         public void CloseEvent(string eventID)
         {
             var ev = Get(eventID);
@@ -62,7 +82,9 @@ namespace IOU_Slack_Backend.Services
 
             using (var db = new SystemDbContext())
             {
-                db.Events.Remove(ev);
+                // Refind element to delete in list
+                var dbEvent = db.Events.FirstOrDefault(x => x.EventID == element.EventID);
+                db.Events.Remove(dbEvent);
                 db.SaveChanges();
             }
         }

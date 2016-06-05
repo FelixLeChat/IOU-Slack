@@ -242,6 +242,7 @@
     <Compile Include="Commands\Resolver\ResolvedCommand.cs" />
     <Compile Include="Controllers\EventController.cs" />
     <Compile Include="Controllers\SubscribeController.cs" />
+    <Compile Include="Controllers\TransactionController.cs" />
     <Compile Include="Helper\HttpRequestHelper.cs" />
     <Compile Include="Helper\HttpResponseExceptionHelper.cs" />
     <Compile Include="Helper\Sha1Hash.cs" />
