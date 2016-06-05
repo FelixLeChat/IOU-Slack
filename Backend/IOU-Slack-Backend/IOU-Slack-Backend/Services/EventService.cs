@@ -33,6 +33,7 @@ namespace IOU_Slack_Backend.Services
 
             // Get Current Event
             var ev = Get(splitFixModel.EventID);
+            ev.Price = splitFixModel.Amount;
 
             // update Event
             Update(ev);
@@ -116,7 +117,8 @@ namespace IOU_Slack_Backend.Services
             {
                 // Refind element to delete in list
                 var dbEvent = db.Events.FirstOrDefault(x => x.EventID == element.EventID);
-                db.Events.Remove(dbEvent);
+                dbEvent.Price = element.Price;
+
                 db.SaveChanges();
             }
         }

@@ -18,12 +18,14 @@ namespace IOU_Slack_Backend.Commands.Models
             var eventName = this.Parameters[0];
             var channelId = this.CommandRequest.Channel_ID;
 
-            var id = new EventService()
-                .GetByName(eventName, channelId).ID;
+            var eventId = new EventService()
+                .GetByName(eventName, channelId).EventID;
 
             new EventSubscriptionService().Create(
-                new EventSubscription { id = id, UserID = userId, UserName = userName}
+                new EventSubscription { UserID = userId, UserName = userName, EventID = eventId }
             );
+
+            this.CommandResponse.Text = "You are now successfully subscribed to " + eventName + "!";
         }
     }
 }

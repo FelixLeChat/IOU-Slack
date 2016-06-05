@@ -22,10 +22,10 @@ namespace IOU_Slack_Backend.Commands
                     command = new SubscribeToEventCommand(parameters, commandRequest);
                     break;
                 case CommandType.Split:
-                    command = new SplitFixCommand(parameters, commandRequest);
+                    command = new SplitFixCommand(parameters, commandRequest, CommandType.Split);
                     break;
                 case CommandType.Fix:
-                    command = new SplitFixCommand(parameters, commandRequest);
+                    command = new SplitFixCommand(parameters, commandRequest, CommandType.Fix);
                     break;
                 case CommandType.PayFor:
                     command = new PayForCommand(parameters, commandRequest);

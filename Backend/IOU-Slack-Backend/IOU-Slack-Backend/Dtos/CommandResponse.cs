@@ -17,7 +17,7 @@ namespace IOU_Slack_Backend.Dtos
 
         public CommandResponse()
         {
-            this.ResponseType = "in_channel";
+            this.ResponseType = "ephemeral";
             this.Text = "";
         }
     }

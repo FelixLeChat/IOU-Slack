@@ -10,9 +10,9 @@ namespace IOU_Slack_Backend.Commands.Models
 {
     public class SplitFixCommand : Command
     {
-        public SplitFixCommand(string[] parameters, CommandRequest commandRequest) : base(parameters, commandRequest)
+        public SplitFixCommand(string[] parameters, CommandRequest commandRequest, CommandType commandType) : base(parameters, commandRequest)
         {
-            this.Type = CommandType.SubscribeToEvent;
+            this.Type = commandType;
         }
 
         public override void Execute()
@@ -41,24 +41,25 @@ namespace IOU_Slack_Backend.Commands.Models
                 var userArray = users.Select(u => u.ToString() + ",").ToString();
                 userArray = userArray.Remove(userArray.Length - 1);
 
-                text = string.Format("FIX_EVENT_IOU {0} {1} [{2}]", this.Parameters[0], this.Parameters[2], CommandRequest.Channel_ID, userArray);
+                text = string.Format("FIX_EVENT_IOU {0} {1} {2} {3} [{4}]", model.Amount, this.Parameters[0], this.Parameters[2], CommandRequest.Channel_ID, userArray);
             }
 
             else if (this.Type == CommandType.Split)
             {
                 var users = service.Split(model);
-                var userArray = users.Select(u => u.ToString() + ",").ToString();
-                userArray = userArray.Remove(userArray.Length - 1);
+                var userArray = string.Join(",", users);
 
-                text = string.Format("SPLIT_EVENT_IOU {0} {1} [{2}]", this.Parameters[0], this.Parameters[2], CommandRequest.Channel_ID, userArray);
+                text = string.Format("SPLIT_EVENT_IOU {0} {1} {2} {3} [{4}]", model.Amount, this.Parameters[0], this.Parameters[2], CommandRequest.Channel_ID, userArray);
             }
 
             var response = client.UploadValues(endpoint, "POST", new NameValueCollection() {
-               {"token", "xoxp-48206941781-48203038320-48270725746-ed4777abef"},
-               {"as_user", "true"},
-               {"channel", "@ioubot" },
-               {"text", text}
-           });
+                {"token", "xoxp-48206941781-48203038320-48270725746-ed4777abef"},
+                {"as_user", "true"},
+                {"channel", "@ioubot" },
+                {"text", text}
+            });
+
+            this.CommandResponse.Text = "Event is now active!";
         }
     }
 }
