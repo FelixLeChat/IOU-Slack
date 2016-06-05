@@ -229,7 +229,8 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Backend-Models\Event.cs" />
     <Compile Include="Backend-Models\EventSubscription.cs" />
-    <Compile Include="Backend-Models\Transaction.cs" />
+    <Compile Include="Backend-Models\Debt.cs" />
+    <Compile Include="Backend-Models\Reminder.cs" />
     <Compile Include="Commands\CommandHandler.cs" />
     <Compile Include="Commands\Models\CloseRegistrationCommand.cs" />
     <Compile Include="Commands\Models\Command.cs" />

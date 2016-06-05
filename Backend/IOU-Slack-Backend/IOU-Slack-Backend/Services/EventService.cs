@@ -16,7 +16,6 @@ namespace IOU_Slack_Backend.Services
                 throw HttpResponseExceptionHelper.Create("No event linked to ID when closing : " + eventID,
                     HttpStatusCode.BadRequest);
 
-            ev.IsClosed = true;
             Update(ev);
         }
 
@@ -43,7 +42,7 @@ namespace IOU_Slack_Backend.Services
             using (var db = new SystemDbContext())
             {
                 // set event ID
-                element.EventID = Sha1Hash.GetSha1HashData(element.ChannelId + ":" + element.CreatorUserId);
+                element.EventID = Sha1Hash.GetSha1HashData(element.ChannelID + ":" + element.CreatorID);
 
                 db.Events.Add(element);
                 db.SaveChanges();
@@ -72,14 +71,14 @@ namespace IOU_Slack_Backend.Services
         {
             using (var db = new SystemDbContext())
             {
-                return db.Events.Single(e => e.EventName == eventName && e.ChannelId == channelId);
+                return db.Events.Single(e => e.Name == eventName && e.ChannelID == channelId);
             }
         }
         public Event GetEventByCreatorId(string eventName, string creatorUserId)
         {
             using (var db = new SystemDbContext())
             {
-                return db.Events.Single(e => e.EventName == eventName && e.CreatorUserId == creatorUserId);
+                return db.Events.Single(e => e.Name == eventName && e.CreatorID == creatorUserId);
             }
         }
     }

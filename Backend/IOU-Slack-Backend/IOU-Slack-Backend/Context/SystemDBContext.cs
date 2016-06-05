@@ -6,7 +6,7 @@ namespace IOU_Slack_Backend.Context
 {
     public class SystemDbContext : DbContext
     {
-        public virtual DbSet<Transaction> Transactions { get; set; }
+        public virtual DbSet<Debt> Debts { get; set; }
         public virtual DbSet<Event> Events { get; set; }
         public virtual DbSet<EventSubscription> EventSubscriptions { get; set; }
 

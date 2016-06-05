@@ -16,11 +16,11 @@ namespace IOU_Slack_Backend.Commands.Models
 
             var e = new Event
             {
-                ChannelId = this.CommandRequest.Channel_ID,
+                ChannelID = this.CommandRequest.Channel_ID,
                 ChannelName = this.CommandRequest.Channel_Name,
-                CreatorUserId = this.CommandRequest.User_ID,
+                CreatorID = this.CommandRequest.User_ID,
                 CreatorUsername = this.CommandRequest.User_Name,
-                EventName = this.Parameters[0]
+                Name = this.Parameters[0]
             };
 
             HttpRequestHelper.PostObjectAsync(endpoint, e);

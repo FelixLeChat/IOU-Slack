@@ -22,6 +22,8 @@ namespace IOU_Slack_Backend.Commands.Models
 
             var e = new EventService()
                 .GetByName(eventName, channelId);
+
+            
         }
     }
 }

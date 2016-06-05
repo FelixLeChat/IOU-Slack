@@ -21,7 +21,10 @@ namespace IOU_Slack_Backend.Commands
                 case CommandType.SubscribeToEvent:
                     command = new SubscribeToEventCommand(parameters, commandRequest);
                     break;
-                case CommandType.CloseRegistration:
+                case CommandType.Split:
+                    command = new CloseRegistrationEvent(parameters, commandRequest);
+                    break;
+                case CommandType.Fix:
                     command = new CloseRegistrationEvent(parameters, commandRequest);
                     break;
             }

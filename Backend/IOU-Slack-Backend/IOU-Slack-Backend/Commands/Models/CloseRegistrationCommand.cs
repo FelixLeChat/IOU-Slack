@@ -18,13 +18,13 @@ namespace IOU_Slack_Backend.Commands.Models
             var eventService = new EventService();
 
             var eventId = eventService
-                .GetEventByCreatorId(this.Parameters[0], CommandRequest.User_ID).Id;
+                .GetEventByCreatorId(this.Parameters[0], CommandRequest.User_ID).ID;
 
             var e = new Event
             {
-                CreatorUserId = CommandRequest.User_ID,
+                CreatorID = CommandRequest.User_ID,
                 CreatorUsername = CommandRequest.User_Name,
-                Id = eventId
+                ID = eventId
             };
 
             HttpRequestHelper.PostObjectAsync(endpoint, e);
