@@ -1,5 +1,4 @@
-﻿using System;
-using System.Web.Http;
+﻿using System.Web.Http;
 using IOU_Slack_Backend.Models;
 using IOU_Slack_Backend.Services;
 
@@ -21,6 +20,7 @@ namespace IOU_Slack_Backend.Controllers
         [Route("unsubscribe")]
         public void Unsubcribe(SubscribeModel subscribeModel)
         {
+            EventSubscriptionService.Unsubscribe(subscribeModel);
         }
     }
 }

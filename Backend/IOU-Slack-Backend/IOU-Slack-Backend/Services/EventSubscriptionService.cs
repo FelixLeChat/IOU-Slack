@@ -35,6 +35,20 @@ namespace IOU_Slack_Backend.Services
             });
         }
 
+        public void Unsubscribe(SubscribeModel unsubscribModel)
+        {
+            var subscription = Get(EventSubscriptionHelper.GetEventSubscriptionId(unsubscribModel));
+
+            if (subscription == null)
+                throw HttpResponseExceptionHelper.Create("No subscription to unsubcribe from", HttpStatusCode.BadRequest);
+
+            // Delete Subscription
+            Delete(new EventSubscription()
+            {
+                EventSubscriptionID = EventSubscriptionHelper.GetEventSubscriptionId(unsubscribModel)
+            });
+        }
+
         public override void Create(EventSubscription element)
         {
             if (element == null)
@@ -51,7 +65,21 @@ namespace IOU_Slack_Backend.Services
 
         public override void Delete(EventSubscription element)
         {
-            throw new NotImplementedException();
+            if (element == null)
+                throw HttpResponseExceptionHelper.Create("The element you want to create is null (EventSubscription)",
+                    HttpStatusCode.BadRequest);
+
+            using (var db = new SystemDbContext())
+            {
+                var eventSubscription =
+                    db.EventSubscriptions.FirstOrDefault(x => x.EventSubscriptionID == element.EventSubscriptionID);
+
+                if (eventSubscription == null)
+                    throw HttpResponseExceptionHelper.Create(
+                        "The subscription you want to delete is not in the database", HttpStatusCode.BadRequest);
+
+                db.EventSubscriptions.Remove(eventSubscription);
+            }
         }
 
         public override EventSubscription Get(string id)
