@@ -16,7 +16,7 @@ namespace IOU_Slack_Backend.Commands.Models
 
         public override void Execute()
         {
-            var endpoint = "https://ioubot.herokuapp.com/api/close-registration";
+            var endpoint = "https://slack.com/api/chat.postMessage";
 
             var eventService = new EventService();
 
