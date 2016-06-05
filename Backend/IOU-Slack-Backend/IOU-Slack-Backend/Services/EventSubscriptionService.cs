@@ -3,6 +3,9 @@ using IOU_Slack_Backend.Context;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using IOU_Slack_Backend.Helper;
+using IOU_Slack_Backend.Models;
 
 namespace IOU_Slack_Backend.Services
 {
@@ -13,10 +16,33 @@ namespace IOU_Slack_Backend.Services
             return GetAll(eventID).Count;
         }
 
+        public void Subscribe(SubscribeModel subscribeModel)
+        {
+            // Check if there is a subscription with the same parameter
+            var subscription = Get(EventSubscriptionHelper.GetEventSubscriptionId(subscribeModel));
+
+            if (subscription != null)
+                throw HttpResponseExceptionHelper.Create(
+                    "There is already a subscription that exist between the user : " + subscribeModel.UserID +
+                    " And the event " + subscribeModel.EventID, HttpStatusCode.BadRequest);
+
+            // create subscription
+            Create(new EventSubscription()
+            {
+                EventID = subscribeModel.EventID,
+                UserID = subscribeModel.UserID
+            });
+        }
+
         public override void Create(EventSubscription element)
         {
+            if (element == null)
+                throw HttpResponseExceptionHelper.Create("Element you want to create is null (Event Subscription)",
+                    HttpStatusCode.BadRequest);
+
             using (var db = new SystemDbContext())
             {
+                element.EventSubscriptionID = EventSubscriptionHelper.GetEventSubscriptionId(element);
                 db.EventSubscriptions.Add(element);
                 db.SaveChanges();
             }
@@ -29,12 +55,18 @@ namespace IOU_Slack_Backend.Services
 
         public override EventSubscription Get(string id)
         {
-            throw new NotImplementedException();
+            using (var db = new SystemDbContext())
+            {
+                return db.EventSubscriptions.FirstOrDefault(x => x.EventSubscriptionID == id);
+            }
         }
 
         public override List<EventSubscription> GetAll()
         {
-            throw new NotImplementedException();
+            using (var db = new SystemDbContext())
+            {
+                return db.EventSubscriptions.ToList();
+            }
         }
 
         public List<EventSubscription> GetAll(string eventID)
