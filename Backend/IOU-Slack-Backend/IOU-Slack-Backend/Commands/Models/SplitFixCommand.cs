@@ -37,9 +37,8 @@ namespace IOU_Slack_Backend.Commands.Models
 
             if (this.Type == CommandType.Fix)
             {
-                var users = service.Fix(model);
-                var userArray = users.Select(u => u.ToString() + ",").ToString();
-                userArray = userArray.Remove(userArray.Length - 1);
+                var users = service.Split(model);
+                var userArray = string.Join(",", users);
 
                 text = string.Format("FIX_EVENT_IOU {0} {1} {2} {3} [{4}]", model.Amount, this.Parameters[0], this.Parameters[2], CommandRequest.Channel_ID, userArray);
             }
