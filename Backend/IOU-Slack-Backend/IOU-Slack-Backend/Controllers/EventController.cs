@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Web.Http;
 using IOU_Slack_Backend.Models;
 using IOU_Slack_Backend.Services;
@@ -15,7 +16,7 @@ namespace IOU_Slack_Backend.Controllers
         /// </summary>
         /// <param name="newEvent"></param>
         [HttpPost]
-        [Route("create")]
+        [Route(" ")]
         public void CreateEvent(Event newEvent)
         {
             EventService.Create(newEvent);
@@ -30,7 +31,7 @@ namespace IOU_Slack_Backend.Controllers
         [Route("split")]
         public List<string> SplitEvent(SplitModel splitModel)
         {
-            EventService
+            throw new NotImplementedException();
         }
     }
 }

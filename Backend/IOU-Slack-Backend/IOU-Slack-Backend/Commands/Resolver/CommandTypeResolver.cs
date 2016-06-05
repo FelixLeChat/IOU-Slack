@@ -1,8 +1,7 @@
 ﻿using IOU_Slack_Backend.Commands.Models;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
+using System.Text.RegularExpressions;
 
 namespace IOU_Slack_Backend.Commands.Resolver
 {
@@ -10,16 +9,19 @@ namespace IOU_Slack_Backend.Commands.Resolver
     {
         public static ResolvedCommand Resolve(string text)
         {
-            var resolvedCommand = new ResolvedCommand();
-
             foreach (CommandType type in Enum.GetValues(typeof(CommandType)))
             {
-                var commandText = type.GetDescription();
+                var pattern = type.GetDescription();
 
-                if (text.StartsWith(commandText))
+                var match = Regex.Match(text, pattern);
+
+                if (match.Success)
                 {
-                    resolvedCommand.Parameters = text.Replace(commandText + " ", "");
-                    resolvedCommand.Type = type;
+                    var resolvedCommand = new ResolvedCommand
+                    {
+                        Parameters = match.Groups.Cast<Group>().Skip(1).Select(g => g.Value).ToArray(),
+                        Type = type
+                    };
 
                     return resolvedCommand;
                 }

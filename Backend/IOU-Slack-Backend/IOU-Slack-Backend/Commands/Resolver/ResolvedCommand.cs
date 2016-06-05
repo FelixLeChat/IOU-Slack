@@ -9,6 +9,6 @@ namespace IOU_Slack_Backend.Commands.Resolver
     public class ResolvedCommand
     {
         public CommandType Type { get; set; }
-        public string Parameters { get; set; }
+        public string[] Parameters { get; set; }
     }
 }

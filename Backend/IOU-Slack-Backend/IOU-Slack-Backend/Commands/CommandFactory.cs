@@ -9,7 +9,7 @@ namespace IOU_Slack_Backend.Commands
 {
     public static class CommandFactory
     {
-        public static Command Create(CommandType type, string parameters, CommandRequest commandRequest)
+        public static Command Create(CommandType type, string[] parameters, CommandRequest commandRequest)
         {
             Command command = null;
 
