@@ -39,7 +39,7 @@ namespace IOU_Slack_Backend.Controllers
         /// <param name="splitFixModel"></param>
         /// <returns></returns>
         [HttpPost]
-        [Route("Fix")]
+        [Route("fix")]
         public List<string> FixEvent(SplitFixModel splitFixModel)
         {
             return EventService.Fix(splitFixModel);

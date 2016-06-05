@@ -27,6 +27,9 @@ namespace IOU_Slack_Backend.Commands
                 case CommandType.Fix:
                     command = new SplitFixCommand(parameters, commandRequest);
                     break;
+                case CommandType.PayFor:
+                    command = new PayForCommand(parameters, commandRequest);
+                    break;
             }
 
             return command;

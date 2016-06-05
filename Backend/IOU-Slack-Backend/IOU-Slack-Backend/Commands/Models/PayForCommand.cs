@@ -33,16 +33,18 @@ namespace IOU_Slack_Backend.Commands.Models
                 {"text", string.Format("PAY_EVENT_IOU {0} {1} {2} {3} {4} {5}", this.Parameters[0], eventName, e.ID, userName, userId, e.CreatorUsername)}
             });
 
+            this.CommandResponse.ResponseType = "ephemeral";
+
             if (this.Parameters[2] == "paypal")
             {
                 var paypalLink = "https://www.paypal.me/felix/" + this.Parameters[0];
+
+                this.CommandResponse.Text = string.Format("Use the following <{0}|payment link> to pay {1} back!", paypalLink, e.CreatorUsername);
             }
             else
             {
-
+                this.CommandResponse.Text = string.Format("{0} thanks you for paying him back!", e.CreatorUsername);
             }
-
-            this.CommandResponse.ResponseType = "ephemeral";
         }
     }
 }

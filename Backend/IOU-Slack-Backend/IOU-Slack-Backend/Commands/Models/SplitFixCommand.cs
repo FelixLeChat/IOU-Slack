@@ -31,15 +31,15 @@ namespace IOU_Slack_Backend.Commands.Models
 
             WebClient client = new WebClient();
 
-            string function ="";
+            string function = "";
             EventService service = new EventService();
             if (this.Type == CommandType.Fix)
             {
-               function = "FIX_EVENT_IOU " + model.EventID + " " + model.Amount;
-               service.Fix(model);
+                function = "FIX_EVENT_IOU " + model.EventID + " " + model.Amount;
+                service.Fix(model);
 
             }
-            else if(this.Type == CommandType.Split)
+            else if (this.Type == CommandType.Split)
             {
                 function = "SPLIT_EVENT_IOU " + model.EventID + " " + model.Amount;
                 service.Split(model);
