@@ -30,6 +30,9 @@ namespace IOU_Slack_Backend.Commands
                 case CommandType.PayFor:
                     command = new PayForCommand(parameters, commandRequest);
                     break;
+                case CommandType.AddReminder:
+                    command = new AddReminderCommand(parameters, commandRequest);
+                    break;
             }
 
             return command;

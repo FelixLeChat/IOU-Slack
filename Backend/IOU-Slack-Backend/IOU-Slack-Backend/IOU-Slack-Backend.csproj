@@ -233,6 +233,7 @@
     <Compile Include="Backend-Models\EventSubscription.cs" />
     <Compile Include="Backend-Models\Reminder.cs" />
     <Compile Include="Commands\CommandHandler.cs" />
+    <Compile Include="Commands\Models\AddReminderCommand.cs" />
     <Compile Include="Commands\Models\Command.cs" />
     <Compile Include="Commands\Models\CommandType.cs" />
     <Compile Include="Commands\Models\CreateEventCommand.cs" />

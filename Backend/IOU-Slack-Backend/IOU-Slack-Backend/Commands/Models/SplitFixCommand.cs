@@ -2,6 +2,7 @@
 using IOU_Slack_Backend.Helper;
 using IOU_Slack_Backend.Models;
 using IOU_Slack_Backend.Services;
+using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
 using System.Net;
@@ -31,7 +32,6 @@ namespace IOU_Slack_Backend.Commands.Models
             };
 
             WebClient client = new WebClient();
-
             string text = "";
             EventService service = new EventService();
 

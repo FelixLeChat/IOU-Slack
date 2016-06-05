@@ -17,6 +17,8 @@ namespace IOU_Slack_Backend.Commands.Models
         [Description(@"split ([^\s]*) ([^\$]*)\$ ([^\s]*)")]
         Split,
         [Description(@"fix ([^\s]*) ([^\$]*)\$ ([^\s]*)")]
-        Fix
+        Fix,
+        [Description(@"add reminder to ([^\s]*) at ([^\s]*)")]
+        AddReminder
     }
 }
