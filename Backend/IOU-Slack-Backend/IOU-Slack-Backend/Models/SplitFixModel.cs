@@ -2,7 +2,7 @@
 {
     public class SplitFixModel
     {
-        public float Amount { get; set; }
+        public double Amount { get; set; }
         public string EventID { get; set; }
     }
 }

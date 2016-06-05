@@ -10,6 +10,7 @@ namespace IOU_Slack_Backend
         public string EventSubscriptionID { get; set; }
         public string EventID { get; set; }
         public string UserID { get; set; }
+        public string UserName { get; set; }
     }
 
     public class EventSubscriptionHelper

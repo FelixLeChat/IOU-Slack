@@ -14,6 +14,7 @@ namespace IOU_Slack_Backend.Commands.Models
         public override void Execute()
         {
             var userId = this.CommandRequest.User_ID;
+            var userName = this.CommandRequest.User_Name;
             var eventName = this.Parameters[0];
             var channelId = this.CommandRequest.Channel_ID;
 
@@ -21,7 +22,7 @@ namespace IOU_Slack_Backend.Commands.Models
                 .GetByName(eventName, channelId).ID;
 
             new EventSubscriptionService().Create(
-                new EventSubscription { id = id, UserID = userId }
+                new EventSubscription { id = id, UserID = userId, UserName = userName}
             );
         }
     }

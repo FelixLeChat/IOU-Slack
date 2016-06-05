@@ -29,8 +29,7 @@ namespace IOU_Slack_Backend.Services
         {
             var eventSubeventSubscriptionService = new EventSubscriptionService();
 
-            // Get User List
-            var users = eventSubeventSubscriptionService.GetAll(splitFixModel.EventID);
+            var eventSubscriptions = eventSubeventSubscriptionService.GetAll(splitFixModel.EventID);
 
             // Get Current Event
             var ev = Get(splitFixModel.EventID);
@@ -39,21 +38,22 @@ namespace IOU_Slack_Backend.Services
             Update(ev);
 
             // Generate Debts
-            var userIdList = new List<string>();
+            var userList = new List<string>();
             var debtService = new DebtService();
-            foreach (var user in users)
+
+            foreach (var eventSubscription in eventSubscriptions)
             {
-                userIdList.Add(user.UserID);
+                userList.Add(eventSubscription.UserName);
                 // Debt Creation
                 debtService.Create(new Debt()
                 {
                     AmountDue = ev.Price,
                     EventID = splitFixModel.EventID,
-                    UserID = user.UserID
+                    UserID = eventSubscription.UserID
                 });
             }
 
-            return userIdList;
+            return userList;
         }
 
         public void CloseEvent(string eventID)

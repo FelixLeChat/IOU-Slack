@@ -3,6 +3,7 @@ using IOU_Slack_Backend.Helper;
 using IOU_Slack_Backend.Models;
 using IOU_Slack_Backend.Services;
 using System.Collections.Specialized;
+using System.Linq;
 using System.Net;
 
 namespace IOU_Slack_Backend.Commands.Models
@@ -26,32 +27,38 @@ namespace IOU_Slack_Backend.Commands.Models
             SplitFixModel model = new SplitFixModel()
             {
                 EventID = eventId,
-                Amount = float.Parse(this.Parameters[1])
+                Amount = double.Parse(this.Parameters[1])
             };
 
             WebClient client = new WebClient();
 
-            string function = "";
+            string text = "";
             EventService service = new EventService();
+
             if (this.Type == CommandType.Fix)
             {
-                function = "FIX_EVENT_IOU " + model.EventID + " " + model.Amount;
-                service.Fix(model);
+                var users = service.Fix(model);
+                var userArray = users.Select(u => u.ToString() + ",").ToString();
+                userArray = userArray.Remove(userArray.Length - 1);
 
+                text = string.Format("FIX_EVENT_IOU {0} {1} [{2}]", this.Parameters[0], this.Parameters[2], userArray);
             }
+
             else if (this.Type == CommandType.Split)
             {
-                function = "SPLIT_EVENT_IOU " + model.EventID + " " + model.Amount;
-                service.Split(model);
+                var users = service.Split(model);
+                var userArray = users.Select(u => u.ToString() + ",").ToString();
+                userArray = userArray.Remove(userArray.Length - 1);
+
+                text = string.Format("SPLIT_EVENT_IOU {0} {1} [{2}]", this.Parameters[0], this.Parameters[2], userArray);
             }
 
             var response = client.UploadValues(endpoint, "POST", new NameValueCollection() {
                {"token", "xoxp-48206941781-48203038320-48270725746-ed4777abef"},
                {"as_user", "true"},
                {"channel", "@ioubot" },
-               {"text", function}
+               {"text", text}
            });
-
         }
     }
 }
