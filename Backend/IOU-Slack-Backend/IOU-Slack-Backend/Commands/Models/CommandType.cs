@@ -12,11 +12,11 @@ namespace IOU_Slack_Backend.Commands.Models
         CreateEvent,
         [Description(@"join ([^\s]*)")]
         SubscribeToEvent,
-        [Description(@"pay for ([^\s]*) by ([^\s]*)")]
+        [Description(@"pay ([^\s]*)$ for ([^\s]*) using ([^\s]*)")]
         PayFor,
-        [Description(@"split ([^\s]*) $([^\s]*) ([^\s]*)")]
+        [Description(@"split ([^\s]*) ([^\s]*)$ ([^\s]*)")]
         Split,
-        [Description(@"fix ([^\s]*) $([^\s]*) ([^\s]*)")]
+        [Description(@"fix ([^\s]*) ([^\s]*)$ ([^\s]*)")]
         Fix
     }
 }

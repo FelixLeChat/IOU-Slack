@@ -24,7 +24,6 @@ namespace IOU_Slack_Backend.Commands.Models
                 Name = this.Parameters[0]
             };
 
-
             WebClient client = new WebClient();
 
             var response = client.UploadValues(endpoint, "POST", new NameValueCollection() {
@@ -32,16 +31,7 @@ namespace IOU_Slack_Backend.Commands.Models
                {"as_user", "true"},
                {"channel", "@ioubot" },
                {"text", "CREATE_EVENT_IOU " + e.Name + " " + e.CreatorID + " " + e.CreatorUsername + " " + e.ChannelID +  " " + e.ChannelName }
-           });
-
-            //Channel channel = new Channel();
-            //JsonConvert.PopulateObject(response.ToString(), channel);
-
-
-            //var e = "{'token':'xoxb-48267464898-hkDEJNgqxAvuXspZYdEKB8OF','as_user':'false','channel':'@ioubot',text:'CREATE_EVENT_IOU name name felix name name'}";
-
-           //var response =   HttpRequestHelper.PostObjectAsync(endpoint, e);
-           
+           });           
         }
     }
 }

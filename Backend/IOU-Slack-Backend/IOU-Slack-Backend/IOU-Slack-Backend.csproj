@@ -233,11 +233,11 @@
     <Compile Include="Backend-Models\EventSubscription.cs" />
     <Compile Include="Backend-Models\Reminder.cs" />
     <Compile Include="Commands\CommandHandler.cs" />
-    <Compile Include="Commands\Models\SplitFixCommand.cs" />
     <Compile Include="Commands\Models\Command.cs" />
     <Compile Include="Commands\Models\CommandType.cs" />
     <Compile Include="Commands\Models\CreateEventCommand.cs" />
     <Compile Include="Commands\Models\PayForCommand.cs" />
+    <Compile Include="Commands\Models\SplitFixCommand.cs" />
     <Compile Include="Commands\Models\SubscribeToEventCommand.cs" />
     <Compile Include="Commands\Resolver\CommandTypeResolver.cs" />
     <Compile Include="Commands\Resolver\ResolvedCommand.cs" />

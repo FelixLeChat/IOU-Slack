@@ -2,6 +2,8 @@
 using System.Net;
 using IOU_Slack_Backend.Context;
 using IOU_Slack_Backend.Helper;
+using System.Linq;
+using System;
 
 namespace IOU_Slack_Backend.Services
 {
@@ -35,9 +37,34 @@ namespace IOU_Slack_Backend.Services
             }
         }
 
+        public void ReimburseDebt(int eventID, string userID, double payedAmount)
+        {
+            using (var db = new SystemDbContext())
+            {
+                var debt = db.Debts.Single(d => d.ID == eventID && d.UserID == userID);
+
+                if (debt != null)
+                {
+                    var updatedAmount = debt.AmountDue - payedAmount;
+
+                    if (updatedAmount < 0)
+                    {
+                        throw HttpResponseExceptionHelper.Create(
+                            string.Format("You can't reimburse more than your {0}$ debt", debt.AmountDue),
+                            HttpStatusCode.BadRequest);
+                    }
+                    else
+                    {
+                        debt.AmountDue = updatedAmount;
+                        db.SaveChanges();
+                    }
+                }
+            }
+        }
+
         public override void Update(Debt element)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
     }
 }
