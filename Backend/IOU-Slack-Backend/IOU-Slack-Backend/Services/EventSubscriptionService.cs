@@ -13,7 +13,8 @@ namespace IOU_Slack_Backend.Services
     {
         public int GetParticipantCount(string eventID)
         {
-            return GetAll(eventID).Count;
+            //  return GetAll(eventID).Count;
+            return 1;
         }
 
         public void Subscribe(SubscribeModel subscribeModel)

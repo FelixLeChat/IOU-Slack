@@ -3,6 +3,7 @@ using System.Linq;
 using System.Net;
 using IOU_Slack_Backend.Context;
 using IOU_Slack_Backend.Helper;
+using IOU_Slack_Backend.Backend_Models;
 using IOU_Slack_Backend.Models;
 
 namespace IOU_Slack_Backend.Services

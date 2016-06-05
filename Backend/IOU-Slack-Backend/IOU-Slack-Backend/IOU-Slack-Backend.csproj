@@ -232,13 +232,12 @@
     <Compile Include="Backend-Models\EventReminder.cs" />
     <Compile Include="Backend-Models\EventSubscription.cs" />
     <Compile Include="Backend-Models\Reminder.cs" />
-    <Compile Include="Backend-Models\Transaction.cs" />
-    <Compile Include="Backend-Models\TransactionType.cs" />
     <Compile Include="Commands\CommandHandler.cs" />
     <Compile Include="Commands\Models\CloseRegistrationCommand.cs" />
     <Compile Include="Commands\Models\Command.cs" />
     <Compile Include="Commands\Models\CommandType.cs" />
     <Compile Include="Commands\Models\CreateEventCommand.cs" />
+    <Compile Include="Commands\Models\PayForCommand.cs" />
     <Compile Include="Commands\Models\SubscribeToEventCommand.cs" />
     <Compile Include="Commands\Resolver\CommandTypeResolver.cs" />
     <Compile Include="Commands\Resolver\ResolvedCommand.cs" />
@@ -248,7 +247,8 @@
     <Compile Include="Helper\HttpResponseExceptionHelper.cs" />
     <Compile Include="Helper\Sha1Hash.cs" />
     <Compile Include="Models\PaimentModel.cs" />
-    <Compile Include="Models\SplitModel.cs" />
+    <Compile Include="Models\SplitFixModel.cs" />
+    <Compile Include="Models\SubscribeModel.cs" />
     <Compile Include="Services\AbstractService.cs" />
     <Compile Include="Services\DebtService.cs" />
     <Compile Include="Services\EventService.cs" />
