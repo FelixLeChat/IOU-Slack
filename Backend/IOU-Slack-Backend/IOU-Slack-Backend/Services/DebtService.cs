@@ -13,7 +13,7 @@ namespace IOU_Slack_Backend.Services
         {
             using (var db = new SystemDbContext())
             {
-                return db.Debts.Where(x => x.AmountDue <= 0 && x.EventID == eventID).ToList();
+                return db.Debts.Where(x => x.AmountDue > 0 && x.EventID == eventID).ToList();
             }
         } 
 

@@ -37,6 +37,8 @@ namespace IOU_Slack_Backend.Commands.Models
                    {"user", eventSubscriptionService.GetUserNameById(debt.UserID, debt.EventID)}
                 });
             }
+
+            this.CommandResponse.Text = string.Format("Reminder added to {0} users", list.Count);
         }
     }
 }
