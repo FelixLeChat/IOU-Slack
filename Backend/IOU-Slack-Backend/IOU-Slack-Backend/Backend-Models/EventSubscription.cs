@@ -1,7 +1,7 @@
 ﻿using IOU_Slack_Backend.Helper;
 using IOU_Slack_Backend.Models;
 
-namespace IOU_Slack_Backend.Backend_Models
+namespace IOU_Slack_Backend
 {
     public class EventSubscription
     {
