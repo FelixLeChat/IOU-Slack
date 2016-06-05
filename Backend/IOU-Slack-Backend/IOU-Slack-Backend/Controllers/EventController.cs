@@ -16,7 +16,7 @@ namespace IOU_Slack_Backend.Controllers
         /// </summary>
         /// <param name="newEvent"></param>
         [HttpPost]
-        [Route(" ")]
+        [Route("")]
         public void CreateEvent(Event newEvent)
         {
             EventService.Create(newEvent);
@@ -25,13 +25,25 @@ namespace IOU_Slack_Backend.Controllers
         /// <summary>
         /// Return a list of the users id that are registered to the event and split the money own to evryone
         /// </summary>
-        /// <param name="eventID"></param>
+        /// <param name="splitFixModel"></param>
         /// <returns></returns>
-        [HttpGet]
+        [HttpPost]
         [Route("split")]
-        public List<string> SplitEvent(SplitModel splitModel)
+        public List<string> SplitEvent(SplitFixModel splitFixModel)
         {
-            throw new NotImplementedException();
+            return EventService.Split(splitFixModel);
         }
+
+        /// <summary>
+        /// Return a list of the users id that are registered to the event and set the money for evryone
+        /// </summary>
+        /// <param name="splitFixModel"></param>
+        /// <returns></returns>
+        [HttpPost]
+        [Route("Fix")]
+        public List<string> FixEvent(SplitFixModel splitFixModel)
+        {
+            return EventService.Fix(splitFixModel);
+        } 
     }
 }

@@ -9,23 +9,50 @@ namespace IOU_Slack_Backend.Services
 {
     public class EventService : AbstractService<Event>
     {
-        public List<string> Split(SplitModel splitModel)
+        public List<string> Split(SplitFixModel splitFixModel)
         {
-            // Setup Event Cost
-            var ev = Get(splitModel.EventID);
-
             var eventSubeventSubscriptionService = new EventSubscriptionService();
-            var participantCount = eventSubeventSubscriptionService.GetParticipantCount(splitModel.EventID);
+
+            // Get User List
+            var users = eventSubeventSubscriptionService.GetAll(splitFixModel.EventID);
+            var participantCount = users.Count;
             if (participantCount == 0)
                 throw HttpResponseExceptionHelper.Create("No one has subscribed to the event", HttpStatusCode.BadRequest);
 
-            ev.Price = splitModel.Amount/participantCount;
+            splitFixModel.Amount = splitFixModel.Amount/participantCount;
+
+            return Fix(splitFixModel);
+        }
+
+        public List<string> Fix(SplitFixModel splitFixModel)
+        {
+            var eventSubeventSubscriptionService = new EventSubscriptionService();
+
+            // Get User List
+            var users = eventSubeventSubscriptionService.GetAll(splitFixModel.EventID);
+
+            // Get Current Event
+            var ev = Get(splitFixModel.EventID);
 
             // update Event
             Update(ev);
 
-
             // Generate Debts
+            var userIdList = new List<string>();
+            var debtService = new DebtService();
+            foreach (var user in users)
+            {
+                userIdList.Add(user.UserID);
+                // Debt Creation
+                debtService.Create(new Debt()
+                {
+                    AmountDue = ev.Price,
+                    EventID = splitFixModel.EventID,
+                    UserID = user.UserID
+                });
+            }
+
+            return userIdList;
         }
 
         public void CloseEvent(string eventID)
