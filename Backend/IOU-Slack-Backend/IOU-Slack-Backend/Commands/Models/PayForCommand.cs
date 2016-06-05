@@ -27,7 +27,7 @@ namespace IOU_Slack_Backend.Commands.Models
             WebClient client = new WebClient();
 
             var response = client.UploadValues(endpoint, "POST", new NameValueCollection() {
-                {"token", "xoxp-48206941781-48203038320-48245772515-b78303f850"},
+                {"token", "xoxp-48206941781-48203038320-48284423348-ea63295ae1"},
                 {"as_user", "true"},
                 {"channel", "@ioubot" },
                 {"text", string.Format("PAY_EVENT_IOU {0} {1} {2} {3} {4} {5}", this.Parameters[0], eventName, e.ID, userName, userId, e.CreatorUsername)}
