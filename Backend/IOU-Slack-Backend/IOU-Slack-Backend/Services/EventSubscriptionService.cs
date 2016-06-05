@@ -109,5 +109,13 @@ namespace IOU_Slack_Backend.Services
         {
             throw new NotImplementedException();
         }
+        public string GetUserNameById(string id, string eventId)
+        {
+            using (var db = new SystemDbContext())
+            {
+                return db.EventSubscriptions.FirstOrDefault(e => e.EventID == eventId && e.UserID == id ).UserName;
+            }
+        }
+       
     }
 }

@@ -2,6 +2,7 @@
 using IOU_Slack_Backend.Helper;
 using IOU_Slack_Backend.Models;
 using IOU_Slack_Backend.Services;
+using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
 using System.Net;
@@ -31,13 +32,13 @@ namespace IOU_Slack_Backend.Commands.Models
             };
 
             WebClient client = new WebClient();
-
+            List<string> users = null;
             string text = "";
             EventService service = new EventService();
 
             if (this.Type == CommandType.Fix)
             {
-                var users = service.Fix(model);
+                 users = service.Fix(model);
                 var userArray = users.Select(u => u.ToString() + ",").ToString();
                 userArray = userArray.Remove(userArray.Length - 1);
 
@@ -46,7 +47,7 @@ namespace IOU_Slack_Backend.Commands.Models
 
             else if (this.Type == CommandType.Split)
             {
-                var users = service.Split(model);
+                users = service.Split(model);
                 var userArray = users.Select(u => u.ToString() + ",").ToString();
                 userArray = userArray.Remove(userArray.Length - 1);
 
