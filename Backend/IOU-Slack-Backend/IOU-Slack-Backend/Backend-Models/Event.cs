@@ -1,4 +1,5 @@
 ﻿using System;
+using IOU_Slack_Backend.Helper;
 
 namespace IOU_Slack_Backend
 {
@@ -21,5 +22,13 @@ namespace IOU_Slack_Backend
 
         public DateTime RegistrationDeadline { get; set; }
         public DateTime PaymentDeadline { get; set; }
+    }
+
+    public class EventHelper
+    {
+        public static string GetID(Event ev)
+        {
+            return Sha1Hash.GetSha1HashData(ev.Name + ev.ChannelID + ev.CreatorID);
+        }
     }
 }

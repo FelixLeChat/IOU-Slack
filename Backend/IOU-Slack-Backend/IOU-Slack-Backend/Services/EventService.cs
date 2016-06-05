@@ -87,10 +87,14 @@ namespace IOU_Slack_Backend.Services
 
         public override void Create(Event element)
         {
+            if (element == null)
+                throw HttpResponseExceptionHelper.Create("The given event is null on creation",
+                    HttpStatusCode.BadRequest);
+
             using (var db = new SystemDbContext())
             {
                 // set event ID
-                element.EventID = Sha1Hash.GetSha1HashData(element.ChannelID + ":" + element.CreatorID);
+                element.EventID = EventHelper.GetID(element);
 
                 db.Events.Add(element);
                 db.SaveChanges();
