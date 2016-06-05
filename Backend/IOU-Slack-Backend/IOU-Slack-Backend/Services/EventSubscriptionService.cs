@@ -10,7 +10,8 @@ namespace IOU_Slack_Backend.Services
     {
         public int GetParticipantCount(string eventID)
         {
-            return GetAll(eventID).Count;
+            //  return GetAll(eventID).Count;
+            return 1;
         }
 
         public override void Create(EventSubscription element)
@@ -37,7 +38,7 @@ namespace IOU_Slack_Backend.Services
             throw new NotImplementedException();
         }
 
-        public List<EventSubscription> GetAll(string eventID)
+        public List<EventSubscription> GetAll(int eventID)
         {
             using (var db = new SystemDbContext())
             {

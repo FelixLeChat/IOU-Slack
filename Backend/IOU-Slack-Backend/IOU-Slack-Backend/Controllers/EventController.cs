@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Web.Http;
-using IOU_Slack_Backend.Models;
 using IOU_Slack_Backend.Services;
+using IOU_Slack_Backend.Backend_Models;
 
 namespace IOU_Slack_Backend.Controllers
 {

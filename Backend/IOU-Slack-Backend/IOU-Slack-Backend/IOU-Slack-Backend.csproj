@@ -228,9 +228,11 @@
     <Compile Include="App_Start\SwaggerConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Backend-Models\Event.cs" />
+    <Compile Include="Backend-Models\EventReminder.cs" />
     <Compile Include="Backend-Models\EventSubscription.cs" />
     <Compile Include="Backend-Models\Debt.cs" />
     <Compile Include="Backend-Models\Reminder.cs" />
+    <Compile Include="Backend-Models\SplitModel.cs" />
     <Compile Include="Commands\CommandHandler.cs" />
     <Compile Include="Commands\Models\CloseRegistrationCommand.cs" />
     <Compile Include="Commands\Models\Command.cs" />
@@ -242,7 +244,6 @@
     <Compile Include="Commands\Resolver\ResolvedCommand.cs" />
     <Compile Include="Controllers\EventController.cs" />
     <Compile Include="Controllers\SubscribeController.cs" />
-    <Compile Include="Controllers\TransactionController.cs" />
     <Compile Include="Helper\HttpRequestHelper.cs" />
     <Compile Include="Helper\HttpResponseExceptionHelper.cs" />
     <Compile Include="Helper\Sha1Hash.cs" />
