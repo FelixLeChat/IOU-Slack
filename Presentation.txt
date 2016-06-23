@@ -1,0 +1,33 @@
+
+Intro:
+- Je vais vous presenter le resultat de nos eforts dans ce hackathon et l'histoire de Max
+
+Max :
+- Max est un gars actif qui aime organiser des events pour ses amis et collegues
+- Il utilise slack pour la facilite d'y gerer des groupes depersonnes et les tenir au courant
+
+Problematique :
+- Max s'est aussi mis a la course - Mais pas pour sa sante, il court apres son argent
+- Il a couru jusqu'a trouver le Bot Slack @IOU@
+
+Solution
+- Avec celui-ci Max peut :
+	- Organiser des evenements dans les groupes ayant les memes interets
+	- Garder l'historique de qui lui doit de l'argent
+	- Recevoir un paiement par l'application
+
+- Max veut maintenant organiser plus d'evenement et ses collegues ont aussi la vie faciliter.
+
+Competiteurs
+- Comparer a nos competiteurs, IOU utilise de nouvelles technologies facilitant la vie de MAX. 
+- Il s'integre dans les outils que max connais
+- Et ne lui complique pas la vie avec des messages inutiles
+
+Revenue:
+- En voyant le capital depenser pour des activites que par les utilisateurs de slack, il est facile de voir qu'en prenant 2% de frais de transaction lors du paiement, on peut payer pour la petite infrastructure et equipe necessaire apres peu de temps.
+
+Channels:
+
+Traction:
+- Feedback des participants du hackathon
+- Croissance d'application competitives qui ont des failles que IOU regle
